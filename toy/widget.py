@@ -147,7 +147,7 @@ class Clicker(Widget):
 
     def Task(self):
         while 1:
-            sleep(0.001)
+            sleep(0.01)
             n = randint(0, len(self.Canvas.Widget) - 1)
             w = self.Canvas.Widget[n]
             if w.__class__ != self.__class__:
