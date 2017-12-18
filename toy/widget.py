@@ -26,7 +26,7 @@ class ANCHOR_NUMBERS(ANCHOR_REGULAR):
     pass
 
 
-# Here we define some widgets
+# Now we define some widgets
 class Number(Widget):
     NAME = "Number"
     DIALOG = "V"
@@ -69,12 +69,13 @@ class Summer(Widget):
     def Task(self):
         p = 0
         for i in self["NUMBERS"]:
-            # sleep(0.05)
+            # sleep(0.5)
             self.Checkpoint()
             p += i
         return p
 
 
+# -------------------------------------------------------- #
 class Multiplier(Widget):
     NAME = "Multiplier"
     DIALOG = Di.Number
@@ -90,7 +91,7 @@ class Multiplier(Widget):
         p = 1
         n = len(self["NUMBERS"])
         for index, i in enumerate(self["NUMBERS"]):
-            # sleep(0.01)
+            # sleep(1)
             self.Checkpoint("%s/%s" % (index + 1, n))
             p *= i
         return p
@@ -119,6 +120,33 @@ class SubprocessSummer(Widget):
             return float(p.stdout.read().strip())
 
 
+# -------------------------------------------------------- #
+class Provider(Widget):
+    NAME = "Provider"
+    DIALOG = "V"
+    SINGLETON = True
+
+    def Name(self):
+        return str(self["OUT"])
+
+    def Task(self):
+        return randint(0, 9)
+
+
+class Receiver(Widget):
+    NAME = "Receiver"
+    DIALOG = "V"
+    PROVIDER = Provider, "X10"
+    OUTGOING = ANCHOR_NUMBER
+
+    def Name(self):
+        return str(self["OUT"])
+
+    def Task(self):
+        return randint(0, 9) + self["X10"] * 10
+
+
+# -------------------------------------------------------- #
 class DataFieldExample(Widget):
     NAME = "DataField Example"
     DIALOG = "V"  # Automatically generate dialog using vertical layout
@@ -140,6 +168,7 @@ class DialogExample(Widget):
     INTERNAL = "BT", "BB", "LC", "TC", "LB", "PV", "PF"
 
 
+# -------------------------------------------------------- #
 class Clicker(Widget):
     NAME = "Clicker"
     THREAD = True
@@ -153,8 +182,7 @@ class Clicker(Widget):
             if w.__class__ != self.__class__:
                 x = randint(0, 1)
                 with self.Canvas.Lock:
+                    wx.CallAfter(w.OnAlter)
                     if x:
                         wx.CallAfter(w.OnBegin)
-                    else:
-                        wx.CallAfter(w.OnAlter)
             self.Checkpoint()

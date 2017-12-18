@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from .widget import ANCHOR_NUMBER, ANCHOR_NUMBERS
-from .widget import Number, RandomInt, Summer, Multiplier, SubprocessSummer, DataFieldExample, DialogExample, Clicker
+from .widget import Number, RandomInt, Summer, Multiplier, SubprocessSummer, Provider, Receiver, DataFieldExample, DialogExample, Clicker
 
 # Define legit links
 ANCHORS = [
@@ -15,6 +15,9 @@ WIDGETS = [
     "Input",
     ("#80c0ff", Number, "icon/Number.png"),
     ("#80c0ff", RandomInt, "icon/RandomNumber.png"),
+    "Implicity Connection",
+    ("#80c0ff", Provider, "icon/Provider.png"),
+    ("#80c0ff", Receiver, "icon/Receiver.png"),
     "Task",
     ("#c080ff", Summer, "icon/Summer.png"),
     ("#c080ff", Multiplier, "icon/Multiplier.png"),
