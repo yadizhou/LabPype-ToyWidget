@@ -124,7 +124,7 @@ class SubprocessSummer(Widget):
 class Provider(Widget):
     NAME = "Provider"
     DIALOG = "V"
-    SINGLETON = True
+    UNIQUE = True
 
     def Name(self):
         return str(self["OUT"])
