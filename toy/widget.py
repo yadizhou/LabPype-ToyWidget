@@ -55,6 +55,7 @@ class RandomInt(Widget):
         return randint(self["MIN"], self["MAX"])
 
 
+# -------------------------------------------------------- #
 class Summer(Widget):
     NAME = "Summer"
     DIALOG = Di.Number
@@ -75,7 +76,6 @@ class Summer(Widget):
         return p
 
 
-# -------------------------------------------------------- #
 class Multiplier(Widget):
     NAME = "Multiplier"
     DIALOG = Di.Number

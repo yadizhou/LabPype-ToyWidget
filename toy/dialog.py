@@ -21,7 +21,7 @@ class MyDialog(Dialog):
         self["BT"] = self.AddButtonToggle(Sizer, label="ButtonToggle",
                                           tags=("No", "Yes"))
         self["BB"] = self.AddButtonBundle(Sizer, label="ButtonBundle",
-                                          tags=list("012345"), rows=2)
+                                          choices=list("012345"), rows=2)
         self.AddStaticText(Sizer, label="StaticText",
                            value="Dialog Example")
         self["LC"] = self.AddLineCtrl(Sizer, label="LineCtrl")
@@ -35,7 +35,7 @@ class MyDialog(Dialog):
 
     def SetData(self):
         self.Widget["BT"] = self["BT"].IsToggled()
-        self.Widget["BB"] = self["BB"].GetToggled()
+        self.Widget["BB"] = self["BB"].GetSelection()
         self.Widget["LC"] = self["LC"].GetValue()
         self.Widget["TC"] = self["TC"].GetValue()
         self.Widget["LB"] = self["LB"].GetStringSelection()
@@ -46,7 +46,7 @@ class MyDialog(Dialog):
         if self.Widget["BT"] is not None:
             self["BT"].SetToggle(self.Widget["BT"])
         if self.Widget["BB"] is not None:
-            self["BB"].SetToggled(self.Widget["BB"])
+            self["BB"].SetSelection(self.Widget["BB"])
         if self.Widget["LC"] is not None:
             self["LC"].SetValue(self.Widget["LC"])
         if self.Widget["TC"] is not None:
