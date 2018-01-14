@@ -5,7 +5,7 @@ from labpype.widget import Dialog
 
 class Number(Dialog):
     def Initialize(self, Sizer):
-        self["OUT"] = self.AddLineCtrl(Sizer, "The result is:", "")
+        self["OUT"] = self.AddLineCtrl(Sizer, label="The result is:")
 
     def GetData(self):
         if self.Widget["OUT"] is not None:

@@ -151,7 +151,7 @@ class DataFieldExample(Widget):
     NAME = "DataField Example"
     DIALOG = "V"  # Automatically generate dialog using vertical layout
     INTERNAL = \
-        BooleanField("BOOLEAN", "BooleanField", "No", "Yes"), \
+        BooleanField("BOOLEAN", "BooleanField", ("No", "Yes")), \
         LineField("LINE", "LineField"), \
         TextField("TEXT", "TextField"), \
         IntegerField("INTEGER", "IntegerField"), \
