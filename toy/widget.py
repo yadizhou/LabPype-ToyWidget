@@ -182,7 +182,7 @@ class Clicker(Widget):
             if w.__class__ != self.__class__:
                 x = randint(0, 1)
                 with self.Canvas.Lock:
-                    wx.CallAfter(w.OnAlter)
+                    wx.CallAfter(w.OnAbort)
                     if x:
                         wx.CallAfter(w.OnBegin)
             self.Checkpoint()
